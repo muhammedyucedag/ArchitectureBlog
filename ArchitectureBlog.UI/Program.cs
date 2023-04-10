@@ -1,4 +1,6 @@
+using ArchitectureBlog.Core.Repositories;
 using ArchitectureBlog.DataAccess;
+using ArchitectureBlog.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace ArchitectureBlog.UI
@@ -25,6 +27,8 @@ namespace ArchitectureBlog.UI
             }
             services.AddMvc();
             services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PostgresqlConnection")));
+
+            services.AddScoped<IProjectRepository, ProjectRepository>();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

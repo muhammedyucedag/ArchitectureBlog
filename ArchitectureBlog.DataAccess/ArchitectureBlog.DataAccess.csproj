@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArchitectureBlog.Entities\ArchitectureBlog.Entities.csproj" />
+    <ProjectReference Include="..\ArchitectureBlog.Core\ArchitectureBlog.Core.csproj" />
   </ItemGroup>
 
 </Project>

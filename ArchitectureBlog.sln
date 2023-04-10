@@ -5,11 +5,13 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureBlog.UI", "ArchitectureBlog.UI\ArchitectureBlog.UI.csproj", "{7D76CC1C-FA68-4DCE-B2C1-AFD0ADFD246C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureBlog.Entities", "ArchitectureBlog.Entities\ArchitectureBlog.Entities.csproj", "{4E9E25EA-4AA2-47E0-AE4B-757163CB8DCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureBlog.Entities", "ArchitectureBlog.Entities\ArchitectureBlog.Entities.csproj", "{4E9E25EA-4AA2-47E0-AE4B-757163CB8DCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureBlog.DataAccess", "ArchitectureBlog.DataAccess\ArchitectureBlog.DataAccess.csproj", "{EEA0D9A2-AAD5-48C0-9EC8-DBC8D14803DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureBlog.DataAccess", "ArchitectureBlog.DataAccess\ArchitectureBlog.DataAccess.csproj", "{EEA0D9A2-AAD5-48C0-9EC8-DBC8D14803DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureBlog.Business", "ArchitectureBlog.Business\ArchitectureBlog.Business.csproj", "{F40B2F8D-A8AC-49CF-AFC3-F35D93BA4EC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureBlog.Business", "ArchitectureBlog.Business\ArchitectureBlog.Business.csproj", "{F40B2F8D-A8AC-49CF-AFC3-F35D93BA4EC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureBlog.Core", "ArchitectureBlog.Core\ArchitectureBlog.Core.csproj", "{88FBF52B-3EE3-4E0F-83FE-1B35388B946C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F40B2F8D-A8AC-49CF-AFC3-F35D93BA4EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F40B2F8D-A8AC-49CF-AFC3-F35D93BA4EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F40B2F8D-A8AC-49CF-AFC3-F35D93BA4EC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FBF52B-3EE3-4E0F-83FE-1B35388B946C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FBF52B-3EE3-4E0F-83FE-1B35388B946C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FBF52B-3EE3-4E0F-83FE-1B35388B946C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FBF52B-3EE3-4E0F-83FE-1B35388B946C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
