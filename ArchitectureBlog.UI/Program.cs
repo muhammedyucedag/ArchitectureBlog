@@ -1,3 +1,6 @@
+using ArchitectureBlog.DataAccess;
+using Microsoft.EntityFrameworkCore;
+
 namespace ArchitectureBlog.UI
 {
     public class Program
@@ -10,6 +13,8 @@ namespace ArchitectureBlog.UI
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+            var services = builder.Services;
+            var configuration = builder.Configuration;
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -18,6 +23,8 @@ namespace ArchitectureBlog.UI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            services.AddMvc();
+            services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PostgresqlConnection")));
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
