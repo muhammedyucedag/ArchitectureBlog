@@ -14,9 +14,14 @@ namespace ArchitectureBlog.UI
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
             var services = builder.Services;
             var configuration = builder.Configuration;
+
+            services.AddMvcCore();
+            services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PostgresqlConnection")));
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -25,10 +30,6 @@ namespace ArchitectureBlog.UI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            services.AddMvc();
-            services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PostgresqlConnection")));
-
-            services.AddScoped<IProjectRepository, ProjectRepository>();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
