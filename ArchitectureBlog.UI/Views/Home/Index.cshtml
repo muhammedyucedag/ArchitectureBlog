@@ -1,8 +1,286 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <title>Pop HTML5 Template</title>
+    <link rel="stylesheet" href="~/ArchitectureTemplate/css/bootstrap.min.css">                                  
+    <link rel="stylesheet" href="~/ArchitectureTemplate/fontawesome/css/fontawesome-all.min.css">                
+    <link rel="stylesheet" type="text/css" href="~/ArchitectureTemplate/slick/slick.css" />                       
+    <link rel="stylesheet" type="text/css" href="~/ArchitectureTemplate/slick/slick-theme.css" />
+    <link rel="stylesheet" href="~/ArchitectureTemplate/css/tooplate-style.css">
+
+
+    <script>document.documentElement.className = "js"; var supportsCssVars = function () { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e }; supportsCssVars() || alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
+
+</head>
+
+<body class="Body">
+    <div id="tm-bg"></div>
+    <div id="tm-wrap">
+        <div class="tm-main-content">
+            <div class="container tm-site-header-container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-md-col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col">
+                        <div class="tm-site-header">
+                            <h1 class="mb-4">OPTİMA Mimarlık</h1>
+                            <img src="~/ArchitectureTemplate/img/underline.png" class="img-fluid mb-4">
+                            <p>
+                                Daha yaşanabilir bir dünya yaratmak için çalışıyoruz.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="content">
+                            <div class="grid">
+                                <div class="grid__item" id="home-link">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+                                            <i class="fas fa-home fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">Hoşgeldiniz</span>
+                                            <div class="product__bg"></div>
+                                        </div>
+                                        <div class="product__description">
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <h2 class="tm-page-title">Optima Mimarlık'a Hoş Geldiniz</h2>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <a href="tm-nav-link">
+                                                        <img src="~/ArchitectureTemplate/img/architect-img-01.jpg" class="img-fluid mb-3">
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <p>İş merkezleri, genellikle ofisler, dükkanlar ve restoranlar gibi işletmelerin bir arada bulunduğu binalardır. Bu yapılar, iş dünyasındaki faaliyetlerin merkezi olabilirler. İş merkezleri, şehirlerde ve finansal merkezlerde yoğun olarak bulunur. Bu binalar, genellikle modern mimariye sahiptirler ve geniş cam yüzeyleriyle dikkat çekerler.</p>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <p>Apartmanlar, birden fazla daire içeren büyük binalardır. Bu binalar, genellikle şehir merkezlerinde yer alır ve birçok kişiye ev sahipliği yapar. Apartmanlar, farklı boyut ve şekillerde olabilirler. Modern apartmanlar, genellikle güvenlik sistemleri, yüzme havuzları, spor salonları ve diğer lüks özellikleri içerir.</p>
+
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <a href="#">
+                                                        <img src="~/ArchitectureTemplate/img/architect-img-02.jpg" class="img-fluid mb-3">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <a href="#">
+                                                        <img src="~/ArchitectureTemplate/img/architect-img-03.jpg" class="img-fluid mb-3">
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <p> Hastaneler, tıbbi tedavi ve bakım hizmetleri sunan büyük binalardır. Bu yapılar, acil servisler, ameliyathaneler, yatak odaları, laboratuvarlar ve diğer tıbbi hizmetler için gerekli tesisleri içerir. Hastaneler, şehirlerde veya banliyölerde bulunabilir ve sağlık hizmetlerinin merkezi konumundadırlar.</p>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <p> Oteller, konaklama ve konaklama hizmetleri sunan binalardır. Turistler, iş seyahati yapanlar ve diğer ziyaretçiler için geçici konaklama sağlarlar. Oteller, farklı kategorilerde olabilirler; 5 yıldızlı oteller, butik oteller, tatil köyleri ve daha birçok seçenek bulunur.</p>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <a href="#">
+                                                        <img src="~/ArchitectureTemplate/img/architect-img-04.jpg" class="img-fluid mb-3">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <a href="#">
+                                                        <img src="~/ArchitectureTemplate/img/architect-img-05.jpg" class="img-fluid mb-3">
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <p>Üniversiteler, yüksek öğrenim veren büyük binalardır. Bu binalar, derslikler, laboratuvarlar, kütüphaneler ve öğrenci yurtları gibi birçok farklı tesis içerirler. Üniversiteler, öğrencilerin akademik kariyerlerini sürdürmek için önemli bir yerdir ve araştırma faaliyetleri için de önemlidirler.</p>
+
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <p> Oteller, konaklama ve konaklama hizmetleri sunan binalardır. Turistler, iş seyahati yapanlar ve diğer ziyaretçiler için geçici konaklama sağlarlar. Oteller, farklı kategorilerde olabilirler; 5 yıldızlı oteller, butik oteller, tatil köyleri ve daha birçok seçenek bulunur.</p>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <a href="#">
+                                                        <img src="~/ArchitectureTemplate/img/architect-img-06.jpg" class="img-fluid mb-3">
+                                                    </a>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid__item" id="team-link">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+                                            <i class="fas fa-users fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">Ekip</span>
+                                            <div class="product__bg"></div>
+                                        </div>
+                                        <div class="product__description">
+                                            <div class="p-sm-4 p-2">
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <h2 class="tm-page-title">
+                                                            Ekibimiz
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row tm-reverse-sm">
+                                                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                                        <p class="mb-4">Mimarlık alanında uzmanlaşmış firmamız, tasarım, planlama ve inşaat alanlarında yenilikçi çözümler sunmaktadır. 20 yıldan fazla süredir sektörde yer alan ekibimiz, birçok başarılı projeye imza atmıştır. Bizimle çalışan müşterilerimiz, doğru tasarım ve bütçeye uygun çözümler sunarak hayallerindeki mekanları hayata geçirme fırsatı bulmuştur. Ayrıca, kaliteye olan bağlılığımız ve zamanında teslimat konusundaki hassasiyetimizle de tanınmaktayız. İleri teknolojiyi kullanarak projelerimizi daha da geliştiriyor ve müşterilerimizin ihtiyaçlarını en iyi şekilde karşılamaya çalışıyoruz. Mimarlık deneyimimiz ve uzmanlığımız sayesinde, müşterilerimize her zaman en iyi hizmeti sunmaktan gurur duyuyoruz</p>
+                                                        <p class="mb-5">"Mimarlık alanında yılların verdiği tecrübe ile kurulan şirketimiz, tüm projelerinde yaratıcı ve özgün tasarımlar sunmayı hedeflemektedir.  </p>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-lg-0 mb-sm-4 mb-4">
+                                                        <img src="~/ArchitectureTemplate/img/team-02.jpg" style="height:400px" width="280px">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid__item">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+                                            <i class="fas fa-handshake fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">İşimiz</span>
+                                            <div class="product__bg"></div>
+                                        </div>
+                                        <div class="product__description">
+                                            <div class="p-sm-4 p-2">
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <h2 class="tm-page-title">İşimiz</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <p>
+                                                            Şirketimiz, tasarımları ve projeleri hayata geçirmek için önemli bir rol oynamaktadır. Sektördeki müşterilerinize, yaratıcı ve benzersiz fikirlerinizi sunarak hayallerini gerçekleştirmelerine yardımcı oluyoruz. Mimarlık hizmetleri, binaların sadece görsel olarak hoş görünmesini sağlamakla kalmıyoruz, aynı zamanda onların işlevsel ve güvenli olmasını da garanti altına alıyoruz.
+
+                                                            Şirketimiz, tasarımları hayata geçirme sürecinde sadece müşterilerimizin değil, aynı zamanda inşaat şirketlerinin ve diğer ticari müşterilerimizin de işbirliği yapabileceği bir çözüm sunuyoruz. Uzman ekibimiz, müşterilerimizin vizyonlarını anlayarak, özgün fikirlerle birleştirir ve bu fikirleri hayata geçirmek için en uygun tasarımı geliştirir.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="p-sm-4 p-2 tm-img-container">
+                                                            <div class="tm-img-slider" id="tmImgSlider">
+                                                                <img src="~/ArchitectureTemplate/img/architect-img-01.jpg" alt="Image" class="tm-slider-img">
+                                                                <img src="~/ArchitectureTemplate/img/architect-img-02.jpg" alt="Image" class="tm-slider-img">
+                                                                <img src="~/ArchitectureTemplate/img/architect-img-03.jpg" alt="Image" class="tm-slider-img">
+                                                                <img src="~/ArchitectureTemplate/img/architect-img-04.jpg" alt="Image" class="tm-slider-img">
+                                                                <img src="~/ArchitectureTemplate/img/architect-img-05.jpg" alt="Image" class="tm-slider-img">
+                                                                <img src="~/ArchitectureTemplate/img/architect-img-06.jpg" alt="Image" class="tm-slider-img">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid__item">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+                                            <i class="fas fa-comments fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">İletişim</span>
+                                            <div class="product__bg"></div>
+                                        </div>
+                                        <div class="product__description">
+                                            <div class="pt-sm-4 pb-sm-4 pl-sm-5 pr-sm-5 pt-2 pb-2 pl-3 pr-3">
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <h2 class="tm-page-title">
+                                                            Bize Ulaşın
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-12">
+                                                        <p>Şirketimiz, müşterilerimize en kaliteli hizmeti sunmak için her zaman hazırdır. İster bir projenin başlangıcında olsun, isterse de bitiş aşamasında, ekibimiz size en uygun çözümleri sunmak için çalışacaktır.</p>
+                                                        <p>Bize Ulaşın</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <form action="index.html" method="post" class="contact-form">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6 col-lg-6 col-xl-6">
+                                                                    <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="İsiminiz" required />
+                                                                </div>
+                                                                <div class="form-group col-md-6 col-lg-6 col-xl-6 tm-col-email">
+                                                                    <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Mail Adresiniz" required />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Mesajınız" required></textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary tm-btn-submit">Gönder</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p class="small tm-copyright-text">
+                    Copyright &copy; <span class="tm-current-year">2018</span> Şirketimiz.
+
+                    OPTİMA Mimarlık
+                </p>
+            </footer>
+        </div> <!-- .tm-main-content -->
+    </div>
+    <!-- load JS -->
+    <script src="~/ArchitectureTemplate/js/jquery-3.2.1.slim.min.js"></script>         <!-- https://jquery.com/ -->
+    <script src="~/ArchitectureTemplate/slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
+    <script src="~/ArchitectureTemplate/js/anime.min.js"></script>                     <!-- http://animejs.com/ -->
+    <script src="~/ArchitectureTemplate/js/main.js"></script>
+    <script>
+
+        function setupFooter() {
+            var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;
+
+            var main = $('.tm-main-content');
+
+            if ($(window).height() < pageHeight) {
+                main.addClass('tm-footer-relative');
+            }
+            else {
+                main.removeClass('tm-footer-relative');
+            }
+        }
+
+        /* DOM is ready
+        ------------------------------------------------*/
+        $(function () {
+
+            setupFooter();
+
+            $(window).resize(function () {
+                setupFooter();
+            });
+
+            $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
+        });
+
+    </script>
+
+</body>
+</html>
