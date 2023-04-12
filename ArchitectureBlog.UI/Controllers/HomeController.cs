@@ -8,5 +8,13 @@ namespace ArchitectureBlog.UI.Controllers
         {
             return View();
         }
+        public IActionResult ArchitectureBlog()
+        {
+            return View();
+        }
+        public IActionResult ArchitectureBlogDetail()
+        {
+            return View();
+        }
     }
 }
