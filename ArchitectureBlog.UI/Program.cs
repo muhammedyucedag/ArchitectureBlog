@@ -38,6 +38,10 @@ namespace ArchitectureBlog.UI
 
             app.UseAuthorization();
 
+            app.MapControllerRoute( // area için program cs eklentisi
+            name: "areas",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
