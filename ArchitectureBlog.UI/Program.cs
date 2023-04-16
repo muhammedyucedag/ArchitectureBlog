@@ -1,4 +1,6 @@
+using ArchitectureBlog.Business;
 using ArchitectureBlog.Core.Repositories;
+using ArchitectureBlog.Core.Services;
 using ArchitectureBlog.DataAccess;
 using ArchitectureBlog.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,7 @@ namespace ArchitectureBlog.UI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -20,6 +23,9 @@ namespace ArchitectureBlog.UI
             services.AddMvcCore();
             services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PostgresqlConnection")));
             services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             var app = builder.Build();
 

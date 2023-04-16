@@ -18,7 +18,7 @@ namespace ArchitectureBlog.Business
             _repository = repository;
         }
 
-        public Task<int> CreateProject()
+        public Task<int> Create()
         {
            return _repository.Create(new Project());
         }
