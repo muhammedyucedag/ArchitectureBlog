@@ -8,6 +8,6 @@ namespace ArchitectureBlog.Core.Services
 {
     public interface IProjectService
     {
-        Task<int> CreateProject();
+        Task<int> Create();
     }
 }
