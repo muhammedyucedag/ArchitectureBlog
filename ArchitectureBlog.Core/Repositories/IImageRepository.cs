@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ArchitectureBlog.Core.Repositories
 {
-    public interface IProjectRepository : IRepository<Project>
+    public interface IImageRepository : IRepository<Image>
     {
-        Task<List<Project>> GetAllProjectIncludeCategory(Expression<Func<Project, bool>> expression);
     }
 }

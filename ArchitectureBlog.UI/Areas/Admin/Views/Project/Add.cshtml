@@ -1,4 +1,4 @@
-﻿@using ArchitectureBlog.UI.Areas.Admin.Controllers.Models;
+﻿@using ArchitectureBlog.UI.Areas.Admin.Models;
 @model CreateProjectViewModel
 
 @{
@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<form method="post" asp-action="BlogAdd" asp-controller="Blog" enctype="multipart/form-data">
+<form method="post" asp-action="Add" asp-controller="Project" enctype="multipart/form-data">
     <div class="section-header">
         <h2>Yeni Blog Girişi Yap</h2>
     </div>
@@ -30,9 +30,9 @@
 
             <br />
             <div>
-                <label class="form-label">Blog Görseli</label>
-                <input class="form-control" type="file" name="formFile" id="formFile">
-                <span asp-validation-for="BlogImage" class="text-danger"></span>
+                <label class="col-form-label">REsimler</label>
+                <input type="file" name="formColection" multiple />
+                <span asp-validation-for="Files" class="text-danger"></span>
             </div>
             <br />
             <button class="saved"><i class="bi bi-upload me-2"></i>Kaydet</button>

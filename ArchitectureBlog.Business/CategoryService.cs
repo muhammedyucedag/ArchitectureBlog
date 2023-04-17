@@ -4,6 +4,8 @@ using ArchitectureBlog.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,9 +25,19 @@ namespace ArchitectureBlog.Business
             return await _repository.Create(category);
         }
 
-        public async Task<List<Category>> GetAll()
+        public async Task<List<Category>> GetAll(Expression<Func<Category, bool>> expression)
         {
-            return await _repository.GetAll(x => x.IsDeleted == false && x.IsActive);
+            return await _repository.GetAll(expression);
+        }
+
+        public async Task<Category> Get(Expression<Func<Category, bool>> expression)
+        {
+            return await _repository.Find(expression);
+        }
+
+        public async Task<int> Update(Category category)
+        {
+            return await _repository.Update(category);
         }
     }
 }

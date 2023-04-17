@@ -22,10 +22,15 @@ namespace ArchitectureBlog.UI
 
             services.AddMvcCore();
             services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PostgresqlConnection")));
-            services.AddScoped<IProjectRepository, ProjectRepository>();
+            
             services.AddScoped<IProjectService, ProjectService>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IImageService, ImageService>();
+
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IImageRepository, ImageRepository>();
 
             var app = builder.Build();
 

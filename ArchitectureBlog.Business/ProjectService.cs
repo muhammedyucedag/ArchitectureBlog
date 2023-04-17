@@ -4,6 +4,7 @@ using ArchitectureBlog.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,9 +19,14 @@ namespace ArchitectureBlog.Business
             _repository = repository;
         }
 
-        public Task<int> Create()
+        public async Task<int> Create(Project project)
         {
-           return _repository.Create(new Project());
+           return await _repository.Create(project);
+        }
+
+        public async Task<List<Project>> GetAll(Expression<Func<Project, bool>> expression)
+        {
+            return await _repository.GetAllProjectIncludeCategory(expression);
         }
     }
 }

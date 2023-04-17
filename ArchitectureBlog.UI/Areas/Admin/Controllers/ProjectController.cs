@@ -1,8 +1,10 @@
 ﻿using ArchitectureBlog.Core.Services;
 using ArchitectureBlog.Entities;
-using ArchitectureBlog.UI.Areas.Admin.Controllers.Models;
+using ArchitectureBlog.UI.Areas.Admin.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Reflection.Metadata;
 
 namespace ArchitectureBlog.UI.Areas.Admin.Controllers
 {
@@ -11,22 +13,31 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
     {
         private ICategoryService _categoryService;
         private IProjectService _projectService;
+        private IImageService _imageService;
 
-        public ProjectController(ICategoryService categoryService, IProjectService projectService)
+        public ProjectController(ICategoryService categoryService, IProjectService projectService, IImageService imageService)
         {
             _categoryService = categoryService;
             _projectService = projectService;
+            _imageService = imageService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var projects = await _projectService.GetAll(x=>x.IsActive && x.IsDeleted == false);
+
+            IndexProjectViewModel model = new IndexProjectViewModel
+            {
+                Projects = projects
+            };
+
+            return View(model);
         }
 
         public async Task<IActionResult> Add()
         {
             List<SelectListItem> selectListItems = new List<SelectListItem>();
-            var categories = await _categoryService.GetAll();
+            var categories = await _categoryService.GetAll(x => x.IsActive && x.IsDeleted == false);
             foreach (var category in categories)
             {
                 selectListItems.Add(new SelectListItem { Text = category.Name, Value = category.Id.ToString() });
@@ -37,9 +48,53 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(CreateProjectViewModel model)
+        public async Task<IActionResult> Add(CreateProjectViewModel model, IList<IFormFile> formColection)
         {
-            return View();
+            try
+            {
+                Project project = new Project
+                {
+                    CreationTime = DateTime.Now,
+                    IsActive = true,
+                    IsDeleted = false,
+                    Name = model.Title,
+                    Description = model.Description,
+                    Id = Guid.NewGuid(),
+                    CategoryId = model.CategoryId
+                };
+
+                var isSuccess = await _projectService.Create(project) > 0;
+
+                if (formColection != null && formColection.Count() > 0 && isSuccess)
+                {
+                    foreach (var formFile in formColection)
+                    {
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", formFile.FileName);
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await formFile.CopyToAsync(stream);
+                        }
+
+                        Image image = new Image
+                        {
+                            CreationTime = DateTime.Now,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Url = "/Images/" + formFile.FileName,
+                            ProjectId = project.Id
+                        };
+
+                        await _imageService.Create(image);
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+
+                return Content(error.ToString());
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
