@@ -1,0 +1,31 @@
+﻿@model ArchitectureBlog.Entities.Category
+
+<body>
+    <div class="modal fade" id="DeleteCategoryModal" tabindex="-1" aria-labelledby="DeleteCategoryLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Kategori</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="Delete" method="post">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="@Model.Id" />
+                        <p>
+                            Kategoriyi silmek istediğine emin misin ? <br />
+                            Eğer silersen admin panelinde kategori sayfasında kategori güncelle diyerek tekrar kategoriyi aktif hale getireiblirsin...
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>

@@ -1,4 +1,5 @@
 ﻿using ArchitectureBlog.Core.Services;
+using ArchitectureBlog.DataAccess;
 using ArchitectureBlog.Entities;
 using ArchitectureBlog.UI.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -47,15 +48,22 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Delete(Guid id)
+        [HttpPost]
+        public async Task<IActionResult> Passive(Guid id)
         {
-            return View();
+            var category = await _categoryService.Get(x => x.Id == id);
+            category.IsDeleted = true;
+            await _categoryService.Update(category);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete()
+        public async Task<IActionResult> Active(Guid id)
         {
-            return View();
+            var category = await _categoryService.Get(x => x.Id == id);
+            category.IsDeleted = false;
+            await _categoryService.Update(category);
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Update(Guid id)
