@@ -9,6 +9,9 @@ namespace ArchitectureBlog.Entities
 {
     public class Image : BaseEntity
     {
+        public string Url { get; set; }
+
+        public Guid ProjectId { get; set; }
 
         public virtual Project Project { get; set; }
     }

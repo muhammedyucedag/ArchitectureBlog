@@ -1,18 +1,19 @@
 ﻿@using ArchitectureBlog.UI.Areas.Admin.Models;
-@model CreateCategoryViewModel
+@model UpdateCategoryViewModel
 
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Update";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<form method="post" asp-action="Add" asp-controller="Category">
+<form method="post" asp-action="Update" asp-controller="Category">
     <div class="section-header">
         <h2>Yeni Kategori Girişi Yap</h2>
     </div>
     <div class="row">
         <div class="col-5 blogadd">
             <div>
+                @Html.HiddenFor(x=>x.Id)
                 <label class="form-label">Kategori Adı</label>
                 @Html.TextBoxFor(x=>x.Name,new{@class="form-control"})
                 @Html.ValidationMessageFor(x=>x.Name)
@@ -24,7 +25,6 @@
             </button>
         </div>
     </div>
-
 </form>
 
 <style>
