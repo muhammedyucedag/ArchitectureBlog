@@ -7,7 +7,6 @@
 }
 
 <!DOCTYPE html>
-<html>
 
 <head>
 
@@ -18,21 +17,21 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
     <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
-
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
 </head>
 
-<body>
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>Basic Data Tables example with responsive plugin</h5>
+                    <h5>Bu sayfa, web sitemizdeki proje içeriklerini kolayca keşfetmenize yardımcı olacak</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -60,40 +59,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model.Projects)
+                                    @foreach (var project in Model.Projects)
                                     {
                                         <tr class="gradeX">
-                                            <td>@item.Name</td>
-                                            <td>@item.Description</td>
-                                            <td>@item.Category.Name</td>
-                                            <td>@item.CreationTime</td>
+                                        <td>@project.Name</td>
+                                        <td>@project.Description</td>
+                                        <td>@project.Category.Name</td>
+                                        <td>@project.CreationTime</td>
+                                        <td>
+                                            @if (project.IsDeleted)
+                                            {
+                                                <button data-active="@project.Id" class="btn btn-danger">Pasif</button>
+                                            }
+                                            else
+                                            {
+                                                <button data-passive="@project.Id" class="btn btn-success">Aktif</button>
+                                            }
+                                        </td>
                                             <td>
-                                                @if (item.IsDeleted)
-                                                {
-                                                    <span class="btn btn-danger">Pasif</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="btn btn-success">Aktif</span>
-                                                }
-                                            </td>
-                                            <td>
-                                                <a href="/Admin/Category/Update/@item.Id" style="color:white !important;" class="btn btn-primary">Güncelle</a>
-                                                <button type="button" style="color:white !important;" class="btn btn-danger" data-toggle="modal" data-target="#DeleteProjectModal" data-id="@item.Id">Sil</button>
+                                            <a href="/Admin/Project/Update/@project.Id" style="color:white !important;" class="btn btn-primary">Güncelle</a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Başlık</th>
-                                        <th>Açıklama</th>
-                                        <th>Kategori</th>
-                                        <th>Oluşturma Zamanı</th>
-                                        <th>Aktif Mi?</th>
-                                        <th>İşlemler</th>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
 
@@ -102,64 +90,120 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="float-right">
-            10GB of <strong>250GB</strong> Free.
-        </div>
-        <div>
-            <strong>Copyright</strong> Example Company &copy; 2014-2018
-        </div>
-    </div>
 
 
-    <!-- Mainly scripts -->
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
     <script src="js/plugins/dataTables/datatables.min.js"></script>
     <script src="js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Custom and plugin javascript -->
     <script src="js/inspinia.js"></script>
     <script src="js/plugins/pace/pace.min.js"></script>
 
-    <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function () {
-            $('.dataTables-example').DataTable({
-                pageLength: 25,
-                responsive: true,
-                dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
-                    { extend: 'copy' },
-                    { extend: 'csv' },
-                    { extend: 'excel', title: 'ExampleFile' },
-                    { extend: 'pdf', title: 'ExampleFile' },
-
-                    {
-                        extend: 'print',
-                        customize: function (win) {
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
-
-                            $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
-                    }
-                ]
-
-            });
-
-        });
-
-    </script>
-
-</body>
-
-</html>
 
 
+<script>
+    $(document).ready(function () {
+
+        $('[data-active]').click(function (/*event*/) {
+            //event.preventDefault(); // Sayfa yenilenmesni engeller
+
+            const buttonElement = $(this)
+
+            swal({
+                title: "Aktif edilsin mi ?",
+                text: "Bu işlem seçtiğiniz kategoriyi aktif edecektir.",
+                icon: "info",
+                buttons: ["İptal Et", "Aktif Et"],
+
+
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+
+                    $.ajax({
+                        method: "post",
+                        url: '/Admin/Project/Active/' + buttonElement.data('active'),
+
+                    }).done(function (result) {
+                        swal({
+                            title: "Aktif etme işlemi başarılı",
+                            icon: "success",
+                            button: "Ok",
+                        });
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+
+                    }).fail(function () {
+                        swal({
+                            title: "Aktif etme işlemi başarısız.",
+                            icon: "danger",
+                            button: "OK",
+                        });
+
+                    })
+                }
+                else {
+                    swal({
+                        title: "Akitf etme işlemi iptal edildi.",
+                        icon: "success",
+                        button: "OK",
+                    });
+                }
+            })
+
+
+        })
+
+        $('[data-passive]').click(function (/*event*/) {
+            //event.preventDefault(); // Sayfa yenilenmesni engeller
+
+            const buttonElement = $(this)
+
+            swal({
+
+                title: "Pasif edilsin mi ?",
+                text: "Bu işlem seçmiş olduğunuz kategoriyi pasif edecektir.",
+                icon: "info",
+                buttons: ["İptal Et", "Pasif Et"],
+                dangerMode: true
+
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+
+                    $.ajax({
+                        method: "post",
+                        url: '/Admin/Project/Passive/' + buttonElement.data('passive'),
+
+                    }).done(function (result) {
+                        swal({
+                            title: "Pasif işlemi başarılı",
+                            icon: "success",
+                            button: "OK",
+                        });
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+
+                    }).fail(function () {
+                        swal({
+                            title: "Pasif işlemi başarısız.",
+                            icon: "danger",
+                            button: "OK",
+                        });
+
+                    })
+                }
+                else {
+                    swal({
+                        title: "Pasif işlemi iptal edildi.",
+                        icon: "success",
+                        button: "OK",
+                    });
+                }
+            })
+        })
+    })
+</script>
