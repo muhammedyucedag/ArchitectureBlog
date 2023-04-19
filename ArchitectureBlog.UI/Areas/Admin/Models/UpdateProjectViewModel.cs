@@ -7,5 +7,6 @@ namespace ArchitectureBlog.UI.Areas.Admin.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string CategoryId { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
 
             await _categoryService.Create(category);
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

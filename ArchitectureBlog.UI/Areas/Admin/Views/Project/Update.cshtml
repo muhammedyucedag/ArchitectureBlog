@@ -24,6 +24,11 @@
                 @Html.ValidationMessageFor(x=>x.Description)
             </div>
             <br />
+            <div class="mb-4">
+                <label class="form-label">Kategori Seçiniz</label>
+                @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.Categories,new{@class="form-control"})
+            </div>
+            <br />
             <button class="saved"><i class="bi bi-upload me-2"></i>Kaydet</button>
             <button class="backtolist">
                 <a class="backtolistlink" href="/Admin/Project/Index"><i class="bi bi-arrow-left me-2"></i>Listeye Dön</a>
