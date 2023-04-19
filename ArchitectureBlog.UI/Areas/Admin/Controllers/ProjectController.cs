@@ -1,4 +1,7 @@
-﻿using ArchitectureBlog.Core.Services;
+﻿using ArchitectureBlog.Business;
+using ArchitectureBlog.Core.Repositories;
+using ArchitectureBlog.Core.Services;
+using ArchitectureBlog.DataAccess.Repositories;
 using ArchitectureBlog.Entities;
 using ArchitectureBlog.UI.Areas.Admin.Models;
 using Microsoft.AspNetCore.Http;
@@ -13,7 +16,9 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
     {
         private ICategoryService _categoryService;
         private IProjectService _projectService;
-        private IImageService _imageService;
+        private IImageService _imageService;    
+
+        IProjectRepository ProjectRepository { get; set; }
 
         public ProjectController(ICategoryService categoryService, IProjectService projectService, IImageService imageService)
         {
@@ -24,7 +29,7 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var projects = await _projectService.GetAll(x=>x.IsActive && x.IsDeleted == false);
+            var projects = await _projectService.GetAll(x => x.IsActive /*&& x.IsDeleted == false*/);
 
             IndexProjectViewModel model = new IndexProjectViewModel
             {
@@ -96,5 +101,43 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Passive(Guid id)
+        {
+            var project = await _projectService.Get(x => x.Id == id);
+            project.IsDeleted = true;
+            await _projectService.Update(project);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Active(Guid id)
+        {
+            var project = await _projectService.Get(x => x.Id == id);
+            project.IsDeleted = false;
+            await _projectService.Update(project);
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Update(Guid id)
+        {
+            var project = await _projectService.Get(x => x.Id == id);
+            //List<SelectListItem> values = (from x in _categoryService.GetAll() select new SelectListItem
+            //{
+            //    Text= x.Name,
+            //    Value=x.Id.ToString()
+            //}).ToList();
+
+            UpdateProjectViewModel model = new UpdateProjectViewModel
+            {
+                Name = project.Name,
+                Id = project.Id,
+                Description = project.Description
+            };
+
+            return View(model);
+        }
+        
     }
 }

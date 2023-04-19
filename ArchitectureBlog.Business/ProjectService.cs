@@ -24,9 +24,20 @@ namespace ArchitectureBlog.Business
            return await _repository.Create(project);
         }
 
+        public async Task<Project> Get(Expression<Func<Project, bool>> expression)
+        {
+            return await _repository.Find(expression);
+        }
+
         public async Task<List<Project>> GetAll(Expression<Func<Project, bool>> expression)
         {
             return await _repository.GetAllProjectIncludeCategory(expression);
         }
+
+        public async Task<int> Update(Project project)
+        {
+            return await _repository.Update(project);
+        }
+       
     }
 }
