@@ -16,7 +16,7 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
     {
         private ICategoryService _categoryService;
         private IProjectService _projectService;
-        private IImageService _imageService;    
+        private IImageService _imageService;
 
         IProjectRepository ProjectRepository { get; set; }
 
@@ -123,21 +123,47 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
         public async Task<IActionResult> Update(Guid id)
         {
             var project = await _projectService.Get(x => x.Id == id);
-            //List<SelectListItem> values = (from x in _categoryService.GetAll() select new SelectListItem
-            //{
-            //    Text= x.Name,
-            //    Value=x.Id.ToString()
-            //}).ToList();
+
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+            var categories = await _categoryService.GetAll(x => x.IsActive && x.IsDeleted == false);
+            foreach (var category in categories)
+            {
+                selectListItems.Add(new SelectListItem { Text = category.Name, Value = category.Id.ToString() });
+            }
+            ViewBag.Categories = selectListItems;
 
             UpdateProjectViewModel model = new UpdateProjectViewModel
             {
                 Name = project.Name,
                 Id = project.Id,
-                Description = project.Description
+                Description = project.Description,
+                CategoryId = project.CategoryId.ToString()
             };
 
             return View(model);
         }
-        
+
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateProjectViewModel model)
+        {
+            var project = await _projectService.Get(x => x.Id == model.Id);
+            project.Name= model.Name;
+            project.Description= model.Description;
+            project.CategoryId = Guid.Parse(model.CategoryId);
+
+            bool isUpdated = await _projectService.Update(project) > 0;
+
+            //if (isUpdated)
+            //{
+            //    //popup ı aç;
+            //}
+            //else
+            //{
+            //    return View(model);
+            //}
+
+            return RedirectToAction("Index","Project");
+        }
+
     }
 }
