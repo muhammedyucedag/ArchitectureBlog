@@ -155,12 +155,12 @@
                 <div class="row align-items-center mb-80">
                     <div class="col-xl-6 col-md-6">
                         <div class="single_project_thumb">
-                            <img src="~/ArchitectureTemplate-1/img/project/1.png" alt="">
+                            <img width="585" height="450" src="@item.Images.FirstOrDefault().Url" alt="">
                         </div>
                     </div>
                     <div class="col-xl-5 offset-xl-1 col-md-6">
                         <div class="section_title">
-                            <span class="sub_heading2">Dubai, UAE</span>
+                            <span class="sub_heading2">@item.Location</span>
                             <h4>@item.Name</h4>
                             <p>
                                 @item.Description
@@ -170,63 +170,9 @@
                     </div>
                 </div>
             }
-            @*<div class="row align-items-center mb-80">
-                <div class="col-xl-6 col-md-6">
-                    <div class="section_title">
-                        <span class="sub_heading2">Dhaka, Bangladesh</span>
-                        <h4>MR Kholifa Tower</h4>
-                        <p>
-                            Consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua
-                            quis ipsum suspendisse.
-                        </p>
-                        <a href="/Home/ArchitectureBlogDetail/" class="boxed-btn">Daha Fazla Göster</a>
-                    </div>
-                </div>
-                <div class="col-xl-5 offset-xl-1 col-md-6">
-                    <div class="single_project_thumb">
-                        <img src="~/ArchitectureTemplate-1/img/project/2.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center mb-80">
-                <div class="col-xl-6 col-md-6">
-                    <div class="single_project_thumb">
-                        <img src="~/ArchitectureTemplate-1/img/project/3.png" alt="">
-                    </div>
-                </div>
-                <div class="col-xl-5 offset-xl-1 col-md-6">
-                    <div class="section_title">
-                        <span class="sub_heading2">Dubai, UAE</span>
-                        <h4>Galoni Plan & Design</h4>
-                        <p>
-                            Consectetur adipiscing elit, sed do eiusmod tempor labore et dolore magna aliqua
-                            quis ipsum suspendisse.
-                        </p>
-                        <a href="/Home/ArchitectureBlogDetail/" class="boxed-btn">Daha Fazla Göster</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center mb-80">
-                <div class="col-xl-6 col-md-6">
-                    <div class="section_title">
-                        <span class="sub_heading2">Dhaka, Bangladesh</span>
-                        <h4>Hiclick Mirror design</h4>
-                        <p>
-                            Consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua
-                            quis ipsum suspendisse.
-                        </p>
-                        <a href="/Home/ArchitectureBlogDetail/" class="boxed-btn">Daha Fazla Göster</a>
-                    </div>
-                </div>
-                <div class="col-xl-5 offset-xl-1 col-md-6">
-                    <div class="single_project_thumb">
-                        <img src="~/ArchitectureTemplate-1/img/project/4.png" alt="">
-                    </div>
-                </div>
-            </div>*@
         </div>
     </div>
-
+    
     @await Html.PartialAsync("footer")
  
     <script src="~/ArchitectureTemplate-1/js/vendor/modernizr-3.5.0.min.js"></script>
