@@ -65,7 +65,8 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
                     Name = model.Title,
                     Description = model.Description,
                     Id = Guid.NewGuid(),
-                    CategoryId = model.CategoryId
+                    CategoryId = model.CategoryId,
+                    Location = model.Location
                 };
 
                 var isSuccess = await _projectService.Create(project) > 0;

@@ -22,12 +22,16 @@
                 <label class="form-label">Kategori Seçiniz</label>
                 @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.Categories,new{@class="form-control"})
             </div>
+            <div>
+                <label class="form-label">Lokasyon</label>
+                @Html.TextBoxFor(x=>x.Location,new{@class="form-control"})
+                @Html.ValidationMessageFor(x=>x.Location)
+            </div>
             <div class="mb-1">
                 <label class="form-label">Blog İçeriği</label>
                 @Html.TextAreaFor(x=>x.Description,15,3, new{@class="form-control"})
                 @Html.ValidationMessageFor(x=>x.Description)
             </div>
-
             <br />
             <div>
                 <label class="col-form-label">REsimler</label>

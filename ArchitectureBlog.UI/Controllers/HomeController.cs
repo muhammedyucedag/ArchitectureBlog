@@ -38,8 +38,8 @@ namespace ArchitectureBlog.UI.Controllers
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse("emirbalcii96@gmail.com"));
             email.To.AddRange(a);
-            email.Subject = "Test Email Subject";
-            email.Body = new TextPart(TextFormat.Html) { Text = "<h1>Example HTML Message Body</h1>" };
+            email.Subject = "Mail Var !!!!";
+            email.Body = new TextPart(TextFormat.Html) { Text = $"<h1>{contact_email} - {contact_name}</h1></br><p>{contact_message}</p>" };
 
             // send email
             using var smtp = new SmtpClient();
@@ -48,7 +48,7 @@ namespace ArchitectureBlog.UI.Controllers
             smtp.Send(email);
             smtp.Disconnect(true);
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         // buraya projelerin listelenmesi yapılacaktır.
@@ -56,7 +56,7 @@ namespace ArchitectureBlog.UI.Controllers
         {
             var projects = await _projectService.GetAll(x => x.IsActive && x.IsDeleted == false);
             HomePageProjectModel model = new HomePageProjectModel();
-            model.Projects = projects;
+            model.Projects = projects.OrderByDescending(x => x.CreationTime).Take(5).ToList();
             return View(model);
         }
 

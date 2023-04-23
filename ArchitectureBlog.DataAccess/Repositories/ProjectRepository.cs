@@ -21,7 +21,7 @@ namespace ArchitectureBlog.DataAccess.Repositories
 
         public async Task<List<Project>> GetAllProjectIncludeCategory(Expression<Func<Project, bool>> expression)
         {
-            return await _dbContext.Projects.Include("Category").Include("Image").Where(expression).ToListAsync();
+            return await _dbContext.Projects.Include("Category").Include("Images").Where(expression).ToListAsync();
         }
     }
 }
