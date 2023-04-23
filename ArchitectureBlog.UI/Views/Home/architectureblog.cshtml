@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@model HomePageProjectModel
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
@@ -144,31 +145,32 @@
                         <span class="sub_heading">Proje Görünümü</span>
                         <h3>
                             Son Projelerimiz
-
                         </h3>
                         <div class="seperator"></div>
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center mb-80">
-                <div class="col-xl-6 col-md-6">
-                    <div class="single_project_thumb">
-                        <img src="~/ArchitectureTemplate-1/img/project/1.png" alt="">
+            @foreach (var item in Model.Projects)
+            {
+                <div class="row align-items-center mb-80">
+                    <div class="col-xl-6 col-md-6">
+                        <div class="single_project_thumb">
+                            <img src="~/ArchitectureTemplate-1/img/project/1.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-xl-5 offset-xl-1 col-md-6">
+                        <div class="section_title">
+                            <span class="sub_heading2">Dubai, UAE</span>
+                            <h4>@item.Name</h4>
+                            <p>
+                                @item.Description
+                            </p>
+                            <a href="/Home/ArchitectureBlogDetail/" class="boxed-btn">Daha Fazla Göster</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xl-5 offset-xl-1 col-md-6">
-                    <div class="section_title">
-                        <span class="sub_heading2">Dubai, UAE</span>
-                        <h4>Abahoni Building</h4>
-                        <p>
-                            Consectetur adipiscing elit, sed do eiusmod tempor labore et dolore magna aliqua
-                            quis ipsum suspendisse.
-                        </p>
-                        <a href="/Home/ArchitectureBlogDetail/" class="boxed-btn">Daha Fazla Göster</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center mb-80">
+            }
+            @*<div class="row align-items-center mb-80">
                 <div class="col-xl-6 col-md-6">
                     <div class="section_title">
                         <span class="sub_heading2">Dhaka, Bangladesh</span>
@@ -221,7 +223,7 @@
                         <img src="~/ArchitectureTemplate-1/img/project/4.png" alt="">
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
 

@@ -3,11 +3,24 @@ using Microsoft.AspNetCore.Mvc;
 using MimeKit.Text;
 using MimeKit;
 using MailKit.Net.Smtp;
+using ArchitectureBlog.Entities;
+using ArchitectureBlog.Business;
+using ArchitectureBlog.DataAccess.Repositories;
+using ArchitectureBlog.Core.Repositories;
+using ArchitectureBlog.UI.Models;
+using ArchitectureBlog.Core.Services;
 
 namespace ArchitectureBlog.UI.Controllers
 {
     public class HomeController : Controller
     {
+        private IProjectService _projectService;
+
+        public HomeController(IProjectService projectService)
+        {
+            _projectService = projectService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -38,9 +51,13 @@ namespace ArchitectureBlog.UI.Controllers
             return View();
         }
 
-        public IActionResult ArchitectureBlog()
+        // buraya projelerin listelenmesi yapılacaktır.
+        public async Task<IActionResult> ArchitectureBlog()
         {
-            return View();
+            var projects = await _projectService.GetAll(x => x.IsActive && x.IsDeleted == false);
+            HomePageProjectModel model = new HomePageProjectModel();
+            model.Projects = projects;
+            return View(model);
         }
 
         public IActionResult ArchitectureBlogDetail()
