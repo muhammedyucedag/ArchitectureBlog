@@ -12,5 +12,6 @@ namespace ArchitectureBlog.Core.Repositories
     public interface IProjectRepository : IRepository<Project>
     {
         Task<List<Project>> GetAllProjectIncludeCategory(Expression<Func<Project, bool>> expression);
+        Project GetBlogById(Guid id);
     }
 }

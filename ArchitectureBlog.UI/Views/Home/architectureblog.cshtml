@@ -28,7 +28,7 @@
 
 <body>
 
-    
+
     @await Html.PartialAsync("header")
 
     <div class="slider_area">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-5 offset-xl-1 col-md-6" >
+                <div class="col-xl-5 offset-xl-1 col-md-6">
                     <div class="about_info">
                         <div class="section_title">
                             <span class="sub_heading">Hakkımızda</span>
@@ -136,7 +136,7 @@
             </div>
         </div>
     </div>
- 
+
     <div class="lastest_project">
         <div class="container">
             <div class="row" id="ourprojects">
@@ -155,26 +155,39 @@
                 <div class="row align-items-center mb-80">
                     <div class="col-xl-6 col-md-6">
                         <div class="single_project_thumb">
-                            <img width="585" height="450" src="@item.Images.FirstOrDefault().Url" alt="">
+                            <img width="585" height="450" src="@item.Images.FirstOrDefault()?.Url" alt="@item.Name" style="color:white;">
                         </div>
                     </div>
                     <div class="col-xl-5 offset-xl-1 col-md-6">
                         <div class="section_title">
                             <span class="sub_heading2">@item.Location</span>
                             <h4>@item.Name</h4>
-                            <p>
-                                @item.Description
-                            </p>
-                            <a href="/Home/ArchitectureBlogDetail/" class="boxed-btn">Daha Fazla Göster</a>
+
+                            @{
+                                if (item.Description.Length < 300)
+                                {
+                                    <p>
+                                        @item.Description
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p>
+                                        @item.Description.Substring(0, 300)...
+                                    </p>
+                                }
+                            }
+
+                            <a href="/Home/ArchitectureBlogDetail/@item.Id" class="boxed-btn">Daha Fazla Göster</a>
                         </div>
                     </div>
                 </div>
             }
         </div>
     </div>
-    
+
     @await Html.PartialAsync("footer")
- 
+
     <script src="~/ArchitectureTemplate-1/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="~/ArchitectureTemplate-1/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="~/ArchitectureTemplate-1/js/popper.min.js"></script>

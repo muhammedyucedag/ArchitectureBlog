@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@model HomePageProjectDetailModel
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
@@ -9,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="~/ArchitectureTemplate-1/img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="~/ArchitectureTemplate-1/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/ArchitectureTemplate-1/css/owl.carousel.min.css">
@@ -26,34 +28,17 @@
 
     @await Html.PartialAsync("header")
 
-
-
-
     <div class="project_details">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
                     <div class="project_details_left">
                         <div class="single_details">
-                            <h3>
-                                Mimari plan tasarla <br>
-                                ve inşa et
+                            <h3>                                
+                                @Model.Project.Name
                             </h3>
                             <p>
-                                Mimarlık, hem sanat hem de bilimdir. Bizler, bu iki öğeyi ustalıkla harmanlayarak, müşterilerimizin hayallerini gerçeğe dönüştürüyoruz. Yaptığımız her yapıda, kaliteli malzemeler ve modern teknolojiler kullanarak, sadece göz alıcı değil, aynı zamanda sağlam ve dayanıklı eserler yaratıyoruz.
-                            </p>
-                            <p>
-                                Her projemizde, işlevsellik ve estetik arasındaki mükemmel dengeyi sağlamak için özenle çalışıyoruz. Müşterilerimizin ihtiyaçlarını ve taleplerini dinleyerek, onların hayallerini gerçeğe dönüştürüyoruz. Her adımda müşteri memnuniyeti bizim için önceliklidir.
-                            </p>
-                            <p>Yaptığımız her yapının, ortaya çıkardığımız her tasarımın bir hikayesi vardır. Her bir yapının, mimarisi, malzemeleri ve işlevi gibi detayları, bu hikayenin bir parçasıdır. Bizler, her yapının hikayesini en ince ayrıntısına kadar anlamak ve müşterilerimizin hayallerini bu hikayenin içine yerleştirmek için çalışıyoruz.</p>
-                            <p>
-                                Tasarım ve inşaat sürecinde, işbirliği ve iletişim bizim için çok önemlidir. Müşterilerimizle sıkı bir şekilde çalışarak, her ayrıntıyı dikkatlice planlıyor ve her adımda doğru yolda olduğumuzdan emin oluyoruz.
-                            </p>
-                            <p>
-                                Yaptığımız her yapı, sadece müşterilerimizin ihtiyaçlarını karşılamakla kalmaz, aynı zamanda çevresine de uyum sağlar. Her yapı, bulunduğu çevrenin doğal güzelliklerine uyum sağlayacak şekilde tasarlanır. Bizler, doğanın bir parçası olduğumuzun bilinciyle hareket eder, bu nedenle çevreye saygı gösteririz.
-                            </p>
-                            <p>
-                                Her projemizde, yaratıcılık, özgünlük ve kaliteye öncelik veriyoruz. Yaptığımız her yapı, sizin için bir sanat eseri olarak kalacak ve her zaman hayranlık uyandıracak.
+                                @Model.Project.Description
                             </p>
                         </div>
                  
@@ -62,7 +47,7 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="projects_details_info">
                         <div class="details_thumb">
-                            <img src="~/ArchitectureTemplate-1/img/project/details_info.png" alt="">
+                            <img width="585" height="450" src="@Model.Project.Images.FirstOrDefault()?.Url" alt="@Model.Project.Name">
                         </div>
                         <div class="details_info">
                             <h3>Proje Bilgi</h3>
@@ -73,21 +58,11 @@
                                 </div>
                                 <div class="single_details_info d-flex justify-content-between align-items-center">
                                     <span class="left_info">Kategori</span>
-                                    <span class="right_info">Dış</span>
+                                    <span class="right_info">@Model.Project.Category.Name</span>
                                 </div>
                                 <div class="single_details_info d-flex justify-content-between align-items-center">
-                                    <span class="left_info">Tarih</span>
-                                    <span class="right_info">Ocak 13, 2023</span>
-                                </div>
-                                <div class="single_details_info d-flex justify-content-between align-items-center">
-                                    <span class="left_info">Değerlendirme</span>
-                                    <span class="right_info star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
+                                    <span class="left_info">Teslim Tarihi</span>
+                                    <span class="right_info">@(((DateTime)Model.Project.DeliveryDate).ToString("d MMMM yyyy"))</span>
                                 </div>
                             </div>
                         </div>
@@ -96,10 +71,10 @@
                         <div class="single_details_info d-flex justify-content-between align-items-center">
                             <span class="left_info">Sosyal Medya</span>
                             <span class="right_info">
-                                <a href="#"> <i class="fa fa-facebook" style="color:aliceblue"></i> </a>
-                                <a href="#"> <i class="fa fa-twitter" style="color:aliceblue"></i> </a>
-                                <a href="#"> <i class="fa fa-instagram" style="color:aliceblue"></i> </a>
-                                <a href="#"> <i class="fa fa-pinterest-p" style="color:aliceblue"></i> </a>
+                                <a href="https://www.instagram.com/modernizmimarlikmuhendislik/" target="_blank"> <i class="fa-brands fa-instagram" style="color:aliceblue"></i> </a>
+                                <a href="#"> <i class="fa-brands fa-facebook" style="color:aliceblue"></i> </a>
+                                <a href="#"> <i class="fa-brands fa-twitter" style="color:aliceblue"></i> </a>                           
+                                <a href="#"> <i class="fa-brands fa-pinterest" style="color:aliceblue"></i> </a>
                             </span>
                         </div>
                     </div>

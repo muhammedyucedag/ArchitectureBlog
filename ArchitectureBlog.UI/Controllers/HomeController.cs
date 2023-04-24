@@ -60,9 +60,12 @@ namespace ArchitectureBlog.UI.Controllers
             return View(model);
         }
 
-        public IActionResult ArchitectureBlogDetail()
+        public IActionResult ArchitectureBlogDetail(Guid id)
         {
-            return View();
+            var project = _projectService.GetBlogById(id);
+            HomePageProjectDetailModel model = new HomePageProjectDetailModel();
+            model.Project = project;
+            return View(model);
         }
     }
 }

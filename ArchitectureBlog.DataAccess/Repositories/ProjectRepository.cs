@@ -23,5 +23,10 @@ namespace ArchitectureBlog.DataAccess.Repositories
         {
             return await _dbContext.Projects.Include("Category").Include("Images").Where(expression).ToListAsync();
         }
+
+        public Project GetBlogById(Guid id)
+        {
+            return _dbContext.Projects.Include("Category").Include("Images").FirstOrDefault(x => x.Id == id);
+        }
     }
 }

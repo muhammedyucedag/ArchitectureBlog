@@ -15,7 +15,7 @@ namespace ArchitectureBlog.UI
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             var services = builder.Services;
             var configuration = builder.Configuration;
