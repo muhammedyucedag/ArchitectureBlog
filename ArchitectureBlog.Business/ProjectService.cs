@@ -34,10 +34,14 @@ namespace ArchitectureBlog.Business
             return await _repository.GetAllProjectIncludeCategory(expression);
         }
 
+        public Project GetBlogById(Guid id)
+        {
+            return _repository.GetBlogById( id);
+        }
+
         public async Task<int> Update(Project project)
         {
             return await _repository.Update(project);
         }
-       
     }
 }

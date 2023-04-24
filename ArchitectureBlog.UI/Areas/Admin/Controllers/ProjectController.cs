@@ -60,6 +60,7 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
                 Project project = new Project
                 {
                     CreationTime = DateTime.Now,
+                    DeliveryDate = model.DeliveryDate,
                     IsActive = true,
                     IsDeleted = false,
                     Name = model.Title,
@@ -138,7 +139,8 @@ namespace ArchitectureBlog.UI.Areas.Admin.Controllers
                 Name = project.Name,
                 Id = project.Id,
                 Description = project.Description,
-                CategoryId = project.CategoryId.ToString()
+                CategoryId = project.CategoryId.ToString(),
+                Location= project.Location
             };
 
             return View(model);

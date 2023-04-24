@@ -12,6 +12,7 @@ namespace ArchitectureBlog.Core.Services
     {
         Task<int> Create(Project project);
         Task<List<Project>> GetAll(Expression<Func<Project, bool>> expression);
+        Project GetBlogById(Guid id);
         Task<Project> Get(Expression<Func<Project, bool>> expression);
         Task<int> Update(Project project);
     }

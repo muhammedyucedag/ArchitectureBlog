@@ -7,9 +7,10 @@
 }
 
 <form method="post" asp-action="Update" asp-controller="Category">
-    <div class="section-header">
-        <h2>Yeni Kategori Girişi Yap</h2>
+    <div class="section-header" style="text-align:center; margin-top:50px;">
+        <h1>@Model.Name<h1><h2>Projeyi Güncelle</h2>
     </div>
+    <br />
     <div class="row">
         <div class="col-5 blogadd">
             <div>
@@ -18,10 +19,17 @@
                 @Html.TextBoxFor(x=>x.Name,new{@class="form-control"})
                 @Html.ValidationMessageFor(x=>x.Name)
             </div>
+            <br />
             <div>
                 <label class="form-label">Proje Açıklaması</label>
-                @Html.TextBoxFor(x=>x.Description,new{@class="form-control"})
+                @Html.TextAreaFor(x=>x.Description,15,3,new{@class="form-control"})
                 @Html.ValidationMessageFor(x=>x.Description)
+            </div>
+            <br />
+           <div>
+                <label class="form-label">Lokasyon</label>
+                @Html.TextBoxFor(x=>x.Location,new{@class="form-control"})
+                @Html.ValidationMessageFor(x=>x.Location)
             </div>
             <br />
             <div class="mb-4">
