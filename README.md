@@ -1,1 +1,2 @@
 # ArchitectureBlog
+Mimari Blog Yapısı
